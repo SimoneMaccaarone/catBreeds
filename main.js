@@ -1,10 +1,12 @@
 import './style.css'
 import { CatService } from './services/cat-service'
+import confetti from 'canvas-confetti';
 
 
 CatService.getFacts().then(data => {
     console.log(data)
     displayData(data);
+    fireConfetti();
 });
 
 
@@ -14,4 +16,12 @@ function displayData(data) {
         list.innerHTML += `<li>${factObj.fact}</li>`;
     }
     
+}
+
+function fireConfetti(){
+    confetti({
+        particleCount: 100,
+        spread: 400,
+        origin: { y: 0.6 }
+      });
 }
